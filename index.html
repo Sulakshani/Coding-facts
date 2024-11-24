@@ -4,7 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Fun Facts</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 20px 0;
+            border-left: 5px solid #0056b3;
+            padding-left: 15px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #0056b3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -12,6 +49,30 @@
         <p id="fact"></p>
         <button id="newFactBtn">Show Random Fact</button>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('newFactBtn');
+            const display = document.getElementById('fact');
+
+            const facts = [
+                { "description": "Ada Lovelace, who wrote algorithms for Charles Babbage's Analytical Engine in the mid-1800s, is recognized for creating the first algorithm intended for processing on a computer." },
+                { "description": "The 'Hello, World!' program was popularized by Brian Kernighan in the 1970s and is widely used in programming tutorials." },
+                { "description": "The term 'bug' was popularized by Grace Hopper in 1947 when a moth was found causing issues in the Harvard Mark II computer." },
+                { "description": "There are estimated to be over 700 programming languages, catering to various types of problems and domains." },
+                { "description": "A missing comma in a piece of NASA’s code caused a $125 million Mars orbiter to fail in 1999." }
+            ];
+
+            function showRandomFact() {
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                display.textContent = facts[randomIndex].description;
+            }
+
+            btn.addEventListener('click', showRandomFact);
+
+            // Initially show a random fact
+            showRandomFact();
+        });
+    </script>
 </body>
 </html>
